@@ -9,22 +9,23 @@ async function contarTokens() {
     const textoCompleto = fs.readFileSync('One_Hundred_Years_Of_Solitude.txt', 'utf-8');
 
     //dividir en chunks de 15.000 caracteres
-    const chunks = textoCompleto.match(/(.|[\r\n]){1,15000}/g);
-    let totaltokens = 0;
+    const chunks = 15000
+    let totalTokens = 0
 
     //codificar texto a tokens
-    chunks.forEach((chunk, i)=>{
-        const tokens = encoding.encode(chunk);
-        //imprimir cuanto fue lo generado
-        console.log(`Chunk ${i + 1}: ${tokens.length} tokens`);
-        totaltokens += tokens.length;
-    });
+    for (let i = 0; i < textoCompleto.length; i += chunks) {
+    const chunk = textoCompleto.slice(i, i + chunks); 
+    const tokens = encoding.encode(chunk);
+
+    console.log(`Chunk ${Math.floor(i / chunks) + 1}: ${tokens.length} tokens`);
+    totalTokens += tokens.length;
+  }
     
     //calcular costos (estimado)
 
     const costoPorMilTokens=0.03; //USD por 1000 tokens (gpt-4 input)
-    const costoFinal = (totaltokens*costoPorMilTokens)/1000;
-    console.log(`Total de tokens: ${totaltokens}`);
+    const costoFinal = ( totalTokens*costoPorMilTokens)/1000;
+    console.log(`Total de tokens: ${totalTokens}`);
     console.log (`Costo estimado: ${costoFinal} USD.`);
 }
 
