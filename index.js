@@ -8,8 +8,8 @@ async function contarTokens() {
     //texto a utilizar
     const textoCompleto = fs.readFileSync('One_Hundred_Years_Of_Solitude.txt', 'utf-8');
 
-    //dividir en chunks de 300 caracteres
-    const chunks = textoCompleto.match(/(.|[\r\n]){1,3000}/g);
+    //dividir en chunks de 15.000 caracteres
+    const chunks = textoCompleto.match(/(.|[\r\n]){1,15000}/g);
     let totaltokens = 0;
 
     //codificar texto a tokens
