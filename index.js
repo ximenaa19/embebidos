@@ -6,7 +6,7 @@ async function contarTokens() {
     const encoding = encoding_for_model('gpt-4');
 
     //texto a utilizar
-    const textoCompleto = fs.readFileSync('One_Hundred_Years_Of_Solitude.txt', 'utf-8');
+    const textoCompleto = fs.readFileSync('One_hundred_years_of_solitude.txt', 'utf-8');
 
     //dividir en chunks de 15.000 caracteres
     const chunks = 15000
